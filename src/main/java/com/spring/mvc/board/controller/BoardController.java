@@ -20,7 +20,7 @@ import com.spring.mvc.commons.PageCreator;
 import com.spring.mvc.commons.PageVO;
 import com.spring.mvc.commons.SearchVO;
 
-//깃허브 테스트 5월 8일 수정
+//깃허브 테스트 5월 8일 2차 수정
 @Controller
 @RequestMapping("/board")
 public class BoardController {
