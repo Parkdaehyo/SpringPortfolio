@@ -4,7 +4,8 @@
 <script>
 var bno = '${article.boardNo}'; //${article.boardNo}은 Model이다. commentS.jsp는 detail.jsp에 삽입된 형태고, detail.jsp는 content.jsp에 include 액션태그가 적용된 상태이므로, content.jsp의 Model을 참조할 수 있다. 
 var article ='${article.writer}';
- 
+
+//name 속성의 commentInsertBtn
 $('[name=commentInsertBtn]').click(function(){ //detail.jsp에 commentInsertBtn(등록 부분)을 클릭시 발생하는 클릭 이벤트처리
     var insertData = $('[name=commentInsertForm]').serialize(); //detail.jsp 18번 라인 commentInsertForm의 text내용을 전체 가져옴.
     commentInsert(insertData); //Insert 함수호출(아래) //댓글을 등록하려면 이렇게 호출부를 작성해야한다고 한다.
@@ -22,6 +23,8 @@ function commentList(){
             var a =''; //자바스크립트 식 변수 초기화, a에 공백값을 넣어주어 에러방지
             
             $.each(data, function(key, value){ 
+            	
+            	//자바스크립트에서 html 구문 삽입시키기
                 a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
                 a += '<div class="commentInfo'+value.cno+'">'+'작성자 : '+ article; // 댓글번호 : '+value.cno+' /
                 a += '<a onclick="commentUpdate('+value.cno+',\''+value.content+'\');"> 수정 </a>';
@@ -31,7 +34,7 @@ function commentList(){
             
             });
             
-            $(".commentList").html(a);
+            $(".commentList").html(a); //이부분에 삽입시켜라.
         }
     });
 }
@@ -54,10 +57,10 @@ function commentInsert(insertData){
 }
  
 //댓글 수정 - 댓글 내용 출력을 input 폼으로 변경 
-function commentUpdate(cno, content){
+function commentUpdate(cno, content){ //29번 라인에 의해서 매개값을 받음.
     var a ='';
     
-    a += '<div class="input-group">'; //detail.jsp에 삽입되었으므로, 변수 등을 직접 참조가 가능하다.
+    a += '<div class="input-group">'; 
     a += '<input type="text" class="form-control" name="content_'+cno+'" value="'+content+'"/>';
     a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc('+cno+');">수정</button> </span>';
     a += '</div>';
@@ -94,7 +97,7 @@ function commentDelete(cno){
  
  
  
-$(document).ready(function(){
+$(document).ready(function(){ //이것을 주석처리 하니 처음에 댓글 목록에 진입했을시에 작성되었던 댓글이 안보이다가, 댓글을 작성하니 다시 보였다.
     commentList(); //페이지 로딩시 댓글 목록 출력 
 });
  
