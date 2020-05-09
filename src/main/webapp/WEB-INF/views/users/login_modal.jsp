@@ -23,10 +23,13 @@
 					style="margin-bottom: 0;">
 					<table style="cellpadding: 0; cellspacing: 0; margin: 0 auto; width: 100%">
 						<tr>
-							<td style="text-align: left">
+							<td style="text-align: left">                            <!--  span태그는 보통 id나 class를 묶는데 사용된다.-->
 								<p><strong>아이디를 입력해주세요.</strong>&nbsp;&nbsp;&nbsp;<span id="idCheck"></span></p>
-							</td>
+							</td> 
 						</tr>
+						
+						<!-- required="required" aria-required="true" 아무것도 입력안하고 전송하려고 할때 입력이 안되어있다면 메세지를 띄우는 거라고?-->
+						
 						<tr>
 							<td><input type="text" name="userId" id="signInId"
 								class="form-control tooltipstered" maxlength="10"
@@ -72,9 +75,10 @@
 						<tr>
 							<td
 								style="width: 100%; text-align: center; colspan: 2; margin-top: 24px; padding-top: 12px; border-top: 1px solid #ececec">
-
-								<a class="btn form-control tooltipstered" data-toggle="modal"
-								href="#sign-up"
+															<!-- data-toggle="modal" 모델을 열어주세요. -->
+															<!--  href="#sign-up이 그 대상입니다.-->
+								<a class="btn form-control tooltipstered" data-toggle="modal"  
+								href="#sign-up" 
 								style="cursor: pointer; margin-top: 0; height: 40px; color: white; background-color: orange; border: 0px solid #388E3C; opacity: 0.8">
 									회원가입</a>
 							</td>
@@ -95,14 +99,15 @@
 </div>
 
 <!-- 회원가입 Modal -->
-<div class="modal fade" id="sign-up" role="dialog">
+<!-- 81번 href="#sign-up" 을 id로 받음. -->
+<div class="modal fade" id="sign-up" role="dialog"> <!-- dialog 방식 -->
 	<div class="modal-dialog">
 
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title">
-					<span style="color: #3232FF;">회원가입</span>
+				<h4 class="modal-title"> <!-- h4로 modal-title을 썼지만 -->
+					<span style="color: #3232FF;">회원가입</span> <!-- 화면에는 회원가입만 나온다. -->
 				</h4>
 				<button type="button" class="close" data-dismiss="modal">×</button>
 
@@ -170,7 +175,7 @@
 								placeholder="한글로 최대 6자"></td>
 						</tr>
 						
-						<!--  
+						<!--
 						<tr>
 							<td style="text-align: left">
 								<p><strong>이메일을 입력해주세요.</strong>&nbsp;&nbsp;&nbsp;<span id="emailChk"></span></p>
@@ -183,7 +188,7 @@
 								style="margin-bottom: 25px; width: 100%; height: 40px; border: 1px solid #d9d9de"
 								placeholder="ex) izone@produce.com"></td>
 						</tr> 
-						-->
+						 -->
 
 						<tr>
 							<td style="padding-top: 10px; text-align: center">
@@ -219,7 +224,7 @@ $(function() {
 	//회원가입 검증~~
 	//ID 입력값 검증.
 	//아이디 중복확인 키업 이벤트(한자한자 쓸대마다 실시간으로 서버와 통신하여 아이디를 알려줌)
-	$('#user_id').on('keyup', function() {
+	$('#user_id').on('keyup', function() { //131번
 		if($("#user_id").val() === ""){ //만약 입력창이 공백이라면 this는 #user_id
 			$('#user_id').css("background-color", "pink"); //입력창을 분홍색으로 변경하겠다.
 			$('#idChk').html('<b style="font-size:14px;color:red;">[아이디는 필수 정보에요!]</b>');
