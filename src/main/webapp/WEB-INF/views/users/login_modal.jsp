@@ -224,24 +224,24 @@ $(function() {
 	//회원가입 검증~~
 	//ID 입력값 검증.
 	//아이디 중복확인 키업 이벤트(한자한자 쓸대마다 실시간으로 서버와 통신하여 아이디를 알려줌)
-	$('#user_id').on('keyup', function() { //131번
-		if($("#user_id").val() === ""){ //만약 입력창이 공백이라면 this는 #user_id
+	$('#user_id').on('keyup', function() { //131번 user_id(input="text") 부분
+		if($("#user_id").val() === ""){ //만약 입력창이 공백이라면,
 			$('#user_id').css("background-color", "pink"); //입력창을 분홍색으로 변경하겠다.
-			$('#idChk').html('<b style="font-size:14px;color:red;">[아이디는 필수 정보에요!]</b>');
-			//#idchk에 html이하의 내용을 삽입하라.
-			chk1 = false;
+			$('#idChk').html('<b style="font-size:14px;color:red;">[아이디는 필수 정보에요!]</b>'); //125번 
+			//#idchk <span> </span> 사이에 html이하의 내용을 삽입하라.
+			chk1 = false; // chk1 = false로 설정하겠다.
 		}
 		
 		//아이디 유효성검사
-		else if(!getIdCheck.test($("#user_id").val())){
-			$('#user_id').css("background-color", "pink");
-			$('#idChk').html('<b style="font-size:14px;color:red;">[영문자,숫자 4-14자]</b>');	  
-			chk1 = false;
+		else if(!getIdCheck.test($("#user_id").val())){ //user_id를 test하고, getIdcheck에 있는 문자 내용들과 다르다면,
+			$('#user_id').css("background-color", "pink"); //핑크색으로 변경
+			$('#idChk').html('<b style="font-size:14px;color:red;">[영문자,숫자 4-14자]</b>'); //idCheck 부분에 이 문자열 삽입
+			chk1 = false; // false로 설정.
 		} 
 		//ID 중복확인 비동기 처리
-		else {
+		else { //상기 if, else if문에 대한 조건이 걸리지 않았다면, 
 			//ID 중복확인 비동기 통신
-			const id = $(this).val();
+			const id = $(this).val(); // this == #user_id
 			console.log(id);
 			
 			//통신함수 $.ajax()
