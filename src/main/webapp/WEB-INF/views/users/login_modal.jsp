@@ -247,9 +247,9 @@ $(function() {
 			//통신함수 $.ajax()
 			$.ajax({
 				type: "POST",
-				url: "/user/checkId", //어디로 통신하는가?	
+				url: "/user/checkId", //어디와 통신하는가?	
 				headers: {
-	                "Content-Type": "application/json"
+	                "Content-Type": "application/json" //서버에 json타입을 보내겠다
 	            },
 				dataType: "text",  // result값이 ok or No가 들어오므로 text를 써준다.
 				data: id,
@@ -272,11 +272,11 @@ $(function() {
 	});
 	
 	//패스워드 입력값 검증.
-	$('#password').on('keyup', function() {
+	$('#password').on('keyup', function() { // Line 46번
 		//비밀번호 공백 확인
 		if($("#password").val() === ""){
 		    $('#password').css("background-color", "pink");
-			$('#pwChk').html('<b style="font-size:14px;color:red;">[패스워드는 필수정보!]</b>');
+			$('#pwChk').html('<b style="font-size:14px;color:red;">[패스워드는 필수정보!]</b>'); //154번
 			chk2 = false;
 		}		         
 		//비밀번호 유효성검사
@@ -339,17 +339,18 @@ $(function() {
 	$('#signup-btn').click(function(e) { //186번 회원가입 처리 버튼
 		if(chk1 && chk2 && chk3 && chk4) {
 			//아이디 정보를 저장할 상수 id
-			const id = $("#user_id").val();
+			const id = $("#user_id").val(); //.val() 값을 빼올때 쓰는 메서드
 			console.log("id: " + id);
 			//패스워드 정보
-			const pw = $("#password").val();
+			const pw = $("#password").val(); //146번 라인
 			console.log("pw: " + pw);
 			//이름 정보
 			const name = $("#user_name").val();
 			console.log("name: " + name);
-				
+			
+			//Json형태로 객체만들기
 			const user = { //자바스크립트의 객체 Json은 자바스크립트의 표기법을 따른다.
-				account: id,
+				account: id, //키 값은 VO의 멤버와 같도록
 				password: pw,
 				name: name
 			};
@@ -357,7 +358,7 @@ $(function() {
 			//클라이언트에서 서버와 통신하는 ajax함수(비동기 통신) 
 			$.ajax({
 				type: "POST", //서버에 전송하는 HTTP요청 방식 회원가입이니까 POST방식.
-				url: "/user/", //서버 요청 URI
+				url: "/user/", //서버 요청 URI //UserController의 register 메서드의 PostMapping의 주소값이다. 이 register 메서드는, 이곳 자바스크립트가 적힌곳에서 데이터를 참조해서 결국 Mapper.xml의 SQL문의 id="register" 과 통신하는 것이다.
 				headers: {
 					"Content-Type": "application/json"
 				}, //요청 헤더 정보
@@ -365,9 +366,9 @@ $(function() {
 				data: JSON.stringify(user), //서버로 전송할 데이터
 				success: function(result) { //함수의 매개변수는 통신성공시의 데이터가 저장될 곳.
 					console.log("통신 성공!: " + result);
-					if(result === "joinSuccess") {
+					if(result === "joinSuccess") { //return joinSuccess의 값을 가져왔단 이야기는 DB에 값이 등록이 되었단 이야기이다.
 						alert("회원가입에 성공했습니다!");
-						location.href="/";
+						location.href="/"; // 홈으로 돌려보낸다.
 					} else {
 						alert("회원가입에 실패했습니다!");
 					}
