@@ -197,3 +197,5 @@ $("#keywordInput").keydown(function (key) {
 }); //end jQuery
 
 </script>
+
+<jsp:include page="../include/footer.jsp" />

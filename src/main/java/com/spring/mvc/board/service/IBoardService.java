@@ -1,15 +1,19 @@
 package com.spring.mvc.board.service;
 
 import java.util.List;
+import java.util.Map;
+
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.mvc.board.model.BoardVO;
-import com.spring.mvc.commons.PageVO;
 import com.spring.mvc.commons.SearchVO;
 
 public interface IBoardService {
 
 		//게시글 등록기능
+		//public void insert(BoardVO article, MultipartHttpServletRequest mpRequest);
 		void insert(BoardVO article);
+		//public void insert(BoardVO article);
 		
 		//게시글 단일 조회기능
 		BoardVO getArticle(Integer boardNo); //Integer == int
@@ -22,7 +26,18 @@ public interface IBoardService {
 		
 		//게시글 목록 조회 기능(검색, 페이징 통합)
 		List<BoardVO> getArticleList(SearchVO search);
+		
 		Integer countArticles(SearchVO search);
+		
+		public void insertFile(Map<String, Object> map) throws Exception;
+
+		//void insert(BoardVO article, MultipartHttpServletRequest mpRequest) throws Exception;
+
+		
+		
+	
+		
+	
 		
 		
 		//////////////////////////////////////////////////

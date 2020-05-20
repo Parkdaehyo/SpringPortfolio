@@ -32,6 +32,8 @@
             <textarea class="form-control" rows="5" name='content' readonly>${article.content}</textarea>
           </div>
 
+
+			
          
         <form id="formObj" role="form" action="<c:url value='/board/delete'/>" method="post">  
           

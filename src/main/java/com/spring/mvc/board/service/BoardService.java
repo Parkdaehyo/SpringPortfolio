@@ -1,28 +1,58 @@
 package com.spring.mvc.board.service;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.mvc.board.model.BoardVO;
 import com.spring.mvc.board.repository.IBoardMapper;
 import com.spring.mvc.commons.SearchVO;
 
+import kr.co.util.FileUtils;
+
+
+
+
 @Service
 public class BoardService implements IBoardService {
 
+	
+	@Resource(name="fileUtils")
+	private FileUtils fileUtils;
+	
 	@Inject
 	private IBoardMapper mapper;
 	
-	
 	@Override
 	public void insert(BoardVO article) {
-		mapper.insert(article);
+			
+		System.out.println("Debug "  + article.toString());
+		//System.out.println("Debug "  + mpRequest.getMultiFileMap().toString());
 		
-	}
+				 mapper.insert(article);
+				 
+				 
+				 /*
+				 List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(article, mpRequest); 
+					int size = list.size();
+					for(int i=0; i<size; i++){ 
+						list.get(i); 
+						mapper.insertFile(size);
+					}*/
+				 
+				 
+			}
+	
+	/*
+	public void insertFile(Map<String, Object> map) throws Exception {
+		
+		mapper.insert("boardMapper.insertFile", map);
+	}*/
 
 	
 	@Override
@@ -72,6 +102,20 @@ public class BoardService implements IBoardService {
 		return mapper.countArticles(search);
 	}
 
+	@Override
+	public void insertFile(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+
+
+
+
+	
 	/*
 	@Override
 	public List<BoardVO> getArticleList() {

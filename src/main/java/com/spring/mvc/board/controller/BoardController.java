@@ -1,7 +1,9 @@
 package com.spring.mvc.board.controller;
 
 import java.util.List;
+import java.util.logging.Logger;
 
+import javax.activation.CommandMap;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.mvc.board.model.BoardVO;
@@ -24,6 +29,9 @@ import com.spring.mvc.commons.SearchVO;
 @Controller
 @RequestMapping("/board")
 public class BoardController {
+	
+	//Logger log = Logger.getLogger(this.getClass());
+
 
 	@Inject
 	private IBoardService service;
@@ -120,13 +128,24 @@ public class BoardController {
 	@PostMapping("/write") //자기 자신을 열때 파라미터 값을 BoardVO에 대입합니다.
 	public String write(BoardVO article, RedirectAttributes ra) { //write.jsp의 파라미터값 writer,title,content를 담아서
 		
-		System.out.println("URL: /board/write => POST");
+		System.out.println("write 포스트 작동!!");
 		System.out.println("Controller parameter: " + article);
-		service.insert(article); //mapper.xml과 연결 시켜준다.
+	
+	
+	    service.insert(article);
+		
 		ra.addFlashAttribute("msg" , "regSuccess");
 		
 		return "redirect:/board/list"; //list를 여는 방식. 이렇게 해야 데이터베이스에 연결이 되서 가능한가보다.	
 	}
+	
+	
+	
+	
+
+
+	
+	
 	
 	//게시글 상세 조회 요청
 	@GetMapping("/content/{boardNo}")

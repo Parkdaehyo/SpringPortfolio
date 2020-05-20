@@ -26,7 +26,7 @@ public class BoardMapperTest {
 	article.setTitle("3");
 	article.setWriter("Michael_Jackson");
 	article.setContent("22");
-	mapper.insert(article); //Autowired가 없으면 이게 안되는거같음.
+	//mapper.insert(article); //Autowired가 없으면 이게 안되는거같음.
 	
 	}
 	System.out.println("게시물 등록 성공!");

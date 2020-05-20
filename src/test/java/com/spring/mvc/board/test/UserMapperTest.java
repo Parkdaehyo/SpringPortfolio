@@ -32,7 +32,7 @@ public class UserMapperTest {
 	
 	@Test
 	public void deleteTest() {
-		String account = "abc1234";
+		String account = "abc123";
 		mapper.delete(account);
 		System.out.println("탈퇴 성공!");
 		

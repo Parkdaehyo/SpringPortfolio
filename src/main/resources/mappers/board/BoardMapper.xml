@@ -34,7 +34,7 @@
 		</if>
 	</sql>
 
-<insert id="insert">
+	<insert id="insert">
 		INSERT INTO new_board 
 		  (title, content, writer)
 		VALUES (#{title}, #{content}, #{writer})
@@ -86,8 +86,16 @@ WHERE board_no = #{boardNo}
 
 </delete>
 
-
-
+<!--  
+ <insert id="insertFile" parameterType="hashMap">
+		INSERT INTO MP_FILE(
+			FILE_NO =#{File_NO},
+			ORG_FILE_NAME =#{ORG_FILE_NAME},
+			STORED_FILE_NAME =#{#{STORED_FILE_NAME},
+			FILE_SIZE =#{FILE_SIZE}
+		)
+    </insert>
+-->
 
 <!--
 <select id="getArticleListPaging" resultMap="BoardMap">
