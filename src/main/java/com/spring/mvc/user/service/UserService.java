@@ -55,12 +55,23 @@ public class UserService implements IUserService {
 		return mapper.selectOne(account);
 	}
 	
+
 	@Override
 	public List<UserVO> selectAll() {
 		
 		return mapper.selectAll();
 	}
 
+	//회원 수정 기능
+@Override
+public void memberupdate(UserVO uservo) {
+	
+	mapper.memberupdate(uservo);
+
+}
+	
+	
+	
 	@Override
 	public void keepLogin(String sessionId, Date limitDate, String account) {
 		
@@ -78,5 +89,7 @@ public class UserService implements IUserService {
 		
 		return mapper.getUserWithSessionId(sessionId);
 	}
+
+	
 	
 }

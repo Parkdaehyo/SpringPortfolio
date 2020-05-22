@@ -171,7 +171,9 @@ public class UserController {
 		
 		return new ModelAndView("redirect:/");
 	}
-		
+	
+	
+	
 		
 	//회원탈퇴 요청 처리
 	//@RequestMapping(value="/" , method=RequestMethod.DELETE)

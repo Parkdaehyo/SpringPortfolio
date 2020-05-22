@@ -12,18 +12,13 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.spring.mvc.board.model.BoardVO;
 import com.spring.mvc.board.repository.IBoardMapper;
 import com.spring.mvc.commons.SearchVO;
-
-import kr.co.util.FileUtils;
-
+import com.spring.mvc.user.model.UserVO;
 
 
 
 @Service
 public class BoardService implements IBoardService {
 
-	
-	@Resource(name="fileUtils")
-	private FileUtils fileUtils;
 	
 	@Inject
 	private IBoardMapper mapper;
@@ -101,17 +96,6 @@ public class BoardService implements IBoardService {
 		
 		return mapper.countArticles(search);
 	}
-
-	@Override
-	public void insertFile(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-
-
 
 
 

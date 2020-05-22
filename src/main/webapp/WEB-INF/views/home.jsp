@@ -40,7 +40,7 @@
                          
          <c:if test="${not empty login}" >
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#">MyPage</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/board/mypage">MyPage</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/logout" onclick="return confirm('진짜로 로그아웃 하는거에요?')">LOGOUT</a>

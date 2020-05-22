@@ -1,9 +1,9 @@
 package com.spring.mvc.user.repository;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import com.spring.mvc.board.model.BoardVO;
 import com.spring.mvc.user.model.UserVO;
 
 public interface IUserMapper {
@@ -28,6 +28,9 @@ public interface IUserMapper {
 	
 	//세션 아이디를 통한 회원정보 조회 기능
 	UserVO getUserWithSessionId(String sessionId);
+	
+	//회원 수정기능
+	public void memberupdate(UserVO uservo);
 	
 	
 	

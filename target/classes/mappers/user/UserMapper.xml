@@ -69,6 +69,15 @@
 	
 	</select>
 
+	<select id="memberupdate">
+
+	Update new_user SET
+	account = #{account},
+	name=#{name}
+	WHERE account = #{account}
+
+	</select>
+
 
 	<!-- DB컬럼명과 VO클래스의 필드가 아르므로 ResultMap 세팅 -->
 	<resultMap id="UserMap"

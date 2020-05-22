@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.mvc.board.model.BoardVO;
 import com.spring.mvc.commons.SearchVO;
+import com.spring.mvc.user.model.UserVO;
 
 public interface IBoardService {
 
@@ -29,10 +30,9 @@ public interface IBoardService {
 		
 		Integer countArticles(SearchVO search);
 		
-		public void insertFile(Map<String, Object> map) throws Exception;
-
-		//void insert(BoardVO article, MultipartHttpServletRequest mpRequest) throws Exception;
-
+	
+				
+		
 		
 		
 	

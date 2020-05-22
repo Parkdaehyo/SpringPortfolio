@@ -29,6 +29,7 @@ public class UserMapperTest {
 		System.out.println("회원가입 성공!");
 		
 	}
+
 	
 	@Test
 	public void deleteTest() {

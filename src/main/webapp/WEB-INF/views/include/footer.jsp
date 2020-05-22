@@ -7,49 +7,29 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-  <link rel="stylesheet" href="<c:url value='/css2/bootstrap.css'/>" >
-  <!--Footer-->
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-5">
-          <span class="copyright">
-            Copyright &copy; By Stephen Programming 2019
-          </span>
-        </div>
-        <div class="col-md-3">
-          <ul class="list-inline social">
-            <li class="list-inline-item">
-              <a class="facebook-btn" href="">
-              <img src="assets/img2/facebook.PNG" alt="페이스북 링크" />
-              <img src="assets/img2/facebook.PNG" alt="페이스북링크" />
-            <img src="resources/assets/img2/facebook.PNG" alt="페이스북 링크">
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a class="instagram-btn" href="">
-              <img src="/img/insta.PNG" alt="인스타 링크">
-              <!--  <img src="/MyWeb/img/insta.PNG" alt="인스타 링크">  --> 
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a class="twitter-btn" href="">
-              <img src="/resources/twitter.PNG" alt="트위터 링크">
-                <!--  <img src="/MyWeb/img/twitter.PNG" alt="트위터 링크">  --> 
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <span class="contact">
-            Email: stephen4951@gmail.com
-          </span>
-        </div>
-      </div>
-    </div>
-
-  </footer>
+  
+  <!-- Footer-->
+        <footer class="footer text-center">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Location-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Location</h4>
+                        <p class="lead mb-0">2215 John Daniel Drive<br />Clark, MO 65243</p>
+                    </div>
+                    <!-- Footer Social Icons-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Around the Web</h4>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#"><i class="fab fa-fw fa-facebook-f"></i></a><a class="btn btn-outline-light btn-social mx-1" href="#"><i class="fab fa-fw fa-twitter"></i></a><a class="btn btn-outline-light btn-social mx-1" href="#"><i class="fab fa-fw fa-linkedin-in"></i></a><a class="btn btn-outline-light btn-social mx-1" href="#"><i class="fab fa-fw fa-dribbble"></i></a>
+                    </div>
+                    <!-- Footer About Text-->
+                    <div class="col-lg-4">
+                        <h4 class="text-uppercase mb-4">Email</h4>
+                        <p class="lead mb-0">iwg910@naver.com <a href="http://startbootstrap.com">Parkdaehyo</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
 </body>
 </html>

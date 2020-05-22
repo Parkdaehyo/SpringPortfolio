@@ -32,7 +32,7 @@
 						style="background-color: #3232FF;">게시글 등록</div>
 					<div class="card-body">
 
-						<form role="form" method="post" enctype="multipart/form-data">
+						<form role="form" method="post">
 							<!--  action이 생략되있고 Post방식이면 자기자신한테 보낸다. -->
 
 							<div class="form-group" hidden="hidden">

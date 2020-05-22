@@ -12,7 +12,7 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="card">
-      <div class="card-header text-white" style="background-color: #ff52a0;">${article.boardNo}번 게시물 내용</div>
+      <div class="card-header text-white" style="background-color: #3232FF;">${article.boardNo}번 게시물 내용</div>
       <div class="card-body">
 
        
@@ -43,7 +43,7 @@
           
           																	<!--  onclick: get요청 -->
           <input type="button" value="목록" class="btn" id="list-btn"
-		style="background-color: #ff52a0; margin-top: 0; height: 40px; color: white; border: 0px solid #388E3C; opacity: 0.8">&nbsp;&nbsp;
+		style="background-color: #3232FF; margin-top: 0; height: 40px; color: white; border: 0px solid #388E3C; opacity: 0.8">&nbsp;&nbsp;
           
           
           <c:if test="${login.name == article.writer}">
@@ -68,16 +68,7 @@
 
 <script>
 
-//목록버튼 클릭 이벤트 처리
-$("#list-btn").click(function() {
-	console.log("목록 버튼이 클릭됨!");
-	location.href='/board/list?page=${p.page}'
-			+ '&countPerPage=${p.countPerPage}'
-			+ '&keyword=${p.keyword}'
-			+ '&condition=${p.condition}';
-			
-	
-});
+
 //수정 완료 알림창 처리
 const msg = "${msg}";
 if(msg === "modSuccess") {
@@ -90,11 +81,6 @@ if(msg === "modSuccess") {
 //제이쿼리의 시작
 $(function() {
 	
-	//변수는 let, 상수는 const로 선언(ES2015 문법) var대신에 이걸 쓰라고 권장한다?
-	const formElement = $("#formObj"); //객체로 받아오겠다. //상수란 이 값을 변경하지 않겠다?
-	
-	
-	
 	
 	//수정 클릭 이벤트 처리
 	//var modifyBtn = document.getElementById("modBtn"); //vanila js
@@ -102,7 +88,7 @@ $(function() {
 	
 	modifyBtn.click(function() { //클릭 했을때 생성되는 이벤트 처리
 		console.log("수정 버튼이 클릭됨!");
-		formElement.attr("action" , "/board/modify");//attr(속성 , 변경값 ) 태그의 내부 속성을 변경
+		formElement.attr("action" , "/board/mypage");//attr(속성 , 변경값 ) 태그의 내부 속성을 변경
 		formElement.attr("method", "get"); 
 		formElement.submit();
 	});

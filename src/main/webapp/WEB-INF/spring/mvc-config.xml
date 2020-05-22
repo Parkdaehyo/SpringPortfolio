@@ -25,17 +25,7 @@
 		<property name="dataSource" ref="ds" />
 		<property name="mapperLocations" value="classpath:/mappers/**/*Mapper.xml" />
 	</bean>
-	
 
-	
-	
-	<!-- 매퍼의 인터페이스를 스캔하는 설정 -->
-	<!-- commentMapper가 board -->
-	<mybatis-spring:scan base-package="com.spring.mvc.board.repository"/>
-	<mybatis-spring:scan base-package="com.spring.mvc.user.repository"/>
-	
-	<!-- Namespaces에 추가하니까 됬다. -->
-    <context:component-scan base-package="kr.co.util"/>
 		
 </beans>
 

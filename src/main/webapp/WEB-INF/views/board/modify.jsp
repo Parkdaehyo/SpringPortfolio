@@ -17,7 +17,7 @@
       
       <input type="hidden" name="boardNo" value="${article.boardNo}">
       
-
+		
         <form role="form" method="post">
           <div class="form-group">
             <label>작성자</label>

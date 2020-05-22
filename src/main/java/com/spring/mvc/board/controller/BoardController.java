@@ -1,9 +1,7 @@
 package com.spring.mvc.board.controller;
 
 import java.util.List;
-import java.util.logging.Logger;
 
-import javax.activation.CommandMap;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -14,9 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.mvc.board.model.BoardVO;
@@ -24,6 +19,8 @@ import com.spring.mvc.board.service.IBoardService;
 import com.spring.mvc.commons.PageCreator;
 import com.spring.mvc.commons.PageVO;
 import com.spring.mvc.commons.SearchVO;
+import com.spring.mvc.user.model.UserVO;
+import com.spring.mvc.user.service.IUserService;
 
 //깃허브 테스트 5월 8일 2차 수정
 @Controller
@@ -32,9 +29,12 @@ public class BoardController {
 	
 	//Logger log = Logger.getLogger(this.getClass());
 
-
 	@Inject
 	private IBoardService service;
+	
+	@Inject
+	private IUserService user_service;
+	
 	
 	//게시글 목록 불러오기 요청
 	/*@GetMapping("/list")
@@ -87,6 +87,10 @@ public class BoardController {
 		List<BoardVO> list = service.getArticleList(search);
 		pc.setArticleTotalCount(service.countArticles(search));
 		
+		model.addAttribute("articles" , list); //model로 list.jsp에 화면 전송
+		model.addAttribute("pc" , pc); //PageVO의 객체와 알고리즘등을 기록한 로직들을 list.jsp에 전송
+		return "board/list";
+		
 		/*List<BoardVO> list = null;
 		
 		if(condition.equals("title")) { //list.jsp의 파라미터값?
@@ -105,9 +109,7 @@ public class BoardController {
 	
 		
 		//list.forEach(article -> System.out.println(article));
-		model.addAttribute("articles" , list); //model로 list.jsp에 화면 전송
-		model.addAttribute("pc" , pc); //PageVO의 객체와 알고리즘등을 기록한 로직들을 list.jsp에 전송
-		return "board/list";
+		
 	
 	}
 	//게시글 작성페이지 요청
@@ -140,13 +142,6 @@ public class BoardController {
 	}
 	
 	
-	
-	
-
-
-	
-	
-	
 	//게시글 상세 조회 요청
 	@GetMapping("/content/{boardNo}")
 	public String content(@PathVariable Integer boardNo, Model model
@@ -176,6 +171,8 @@ public class BoardController {
 		//+"&countPerPage=" + paging.getCountPerPage(); //삭제 과정이 완료 된 후의 list를 재요청 해줘라.
 	}
 	
+	
+	
 	//게시글 수정 페이지 요청 // 수정을 하기위해서는 수정전 정보를 불러와야한다.
 	@GetMapping("/modify")
 	public String modify(Integer boardNo, Model model
@@ -201,5 +198,33 @@ public class BoardController {
 		return "redirect:/board/content/" + article.getBoardNo();
 	}
 	
+			//회원정보 열람 요청
+			@GetMapping("/mypage") //아이디 비번이 넘어가니까 POST요청
+			public String mypage(UserVO inputData, Model model,HttpSession session) {
+				
+				 
+				System.out.println("mypage 진입!");
+				System.out.println("Parameter: " + inputData);
+		
+				UserVO user = (UserVO)session.getAttribute("login");
+				
+				
+				model.addAttribute("userinfo" , user);
+				return "board/mypage";
+			}
+			
+	//회원 정보 수정 요청
+	@PostMapping("/mypage")
+	public String memberUpdate(UserVO vo, RedirectAttributes ra, HttpSession session) {
+		
+		user_service.memberupdate(vo);
+		session.invalidate();
+		ra.addFlashAttribute("msg" , "modSuccess");
+		
+		return "redirect:/";
+		
+	}
+	
+		
 	
 }
